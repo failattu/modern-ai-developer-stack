@@ -54,7 +54,7 @@ As you add more standards or collections, list them here so both humans and AI a
 
 * **[Agents.md](https://github.com/simonw/agents.md)** - A proposal for a standard file format to document context/instructions for AI agents within a repository.
 * **[GitHub Spec Kit](https://github.com/github/spec-kit)** - Tools and templates for defining structured specifications. This enables AI to generate high-quality code by strictly following a pre-defined "spec."
-* **[OpenSpec](https://github.com/Fission-AI/OpenSpec)** - Spec-driven development (SDD) for AI coding assistants, with change proposals, tasks, and spec deltas that tools can drive via slash commands or AGENTS.md.
+* **[OpenSpec](https://github.com/Fission-AI/OpenSpec)** - Spec-driven development (SDD) for AI coding assistants, with change proposals, tasks, and spec deltas that tools can drive via slash commands or AGENTS.md. See `docs/workflows/spec-driven-openspec.md` for a full end-to-end example.
 
 ---
 
