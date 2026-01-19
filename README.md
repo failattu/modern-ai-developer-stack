@@ -6,6 +6,33 @@ This repository tracks the rapidly evolving landscape of AI development tools. I
 
 ---
 
+## 🔍 How to Use This Repo
+
+- If you are a team lead:
+  - Use this repo to standardize how your team sets up AI-enabled services.
+  - Start with `AGENTS.md` for agent behavior and `docs/standards/` for language-specific guidelines.
+  - Pick a collection under `collections/` (for example `collections/typescript-web-service.md`) as the default stack for new projects.
+- If you are an individual developer:
+  - Use the sections below to choose tools for your IDE, stack, and workflows.
+  - When creating a new service, follow the relevant standards in `docs/standards/`.
+- If you are an AI coding agent:
+  - Always read `AGENTS.md` first.
+  - For new subprojects, follow the language standards in `docs/standards/` and the relevant collection under `collections/`.
+
+---
+
+## 📚 Standards & Collections
+
+- Language and service standards:
+  - `docs/standards/typescript.md` – TypeScript/Node service layout, tooling, tests, and error handling.
+  - `docs/standards/python.md` – Python service layout, tooling (pytest, ruff, mypy), and error handling.
+- Ready-made stacks (collections):
+  - `collections/typescript-web-service.md` – Opinionated stack for a TypeScript/Node web service with strict typing, Vitest, ESLint, and CI outline.
+
+As you add more standards or collections, list them here so both humans and AI agents can discover them easily.
+
+---
+
 ## 🏗️ Core Development (The "Hands")
 *Tools that integrate directly into the coding workflow.*
 
@@ -17,6 +44,8 @@ This repository tracks the rapidly evolving landscape of AI development tools. I
 ### CLI & Terminal Agents
 * **[Claude Code](https://docs.anthropic.com/)** / **Open Code** - Command-line interfaces that allow LLMs to perform file operations and edits directly from the terminal.
 * **[Aider](https://aider.chat/)** - The benchmark for AI pair programming in the terminal. Excellent at git-aware commits and refactoring.
+* **[OpenAI Codex](https://github.com/openai/codex)** - A lightweight coding agent from OpenAI that runs locally in your terminal and integrates with ChatGPT and IDEs.
+* **[Goose](https://github.com/block/goose)** - A local-first AI engineering agent that automates complex tasks using MCP servers, extensions, and recipes.
 
 ---
 
@@ -25,6 +54,7 @@ This repository tracks the rapidly evolving landscape of AI development tools. I
 
 * **[Agents.md](https://github.com/simonw/agents.md)** - A proposal for a standard file format to document context/instructions for AI agents within a repository.
 * **[GitHub Spec Kit](https://github.com/github/spec-kit)** - Tools and templates for defining structured specifications. This enables AI to generate high-quality code by strictly following a pre-defined "spec."
+* **[OpenSpec](https://github.com/Fission-AI/OpenSpec)** - Spec-driven development (SDD) for AI coding assistants, with change proposals, tasks, and spec deltas that tools can drive via slash commands or AGENTS.md.
 
 ---
 
@@ -75,4 +105,7 @@ This repository tracks the rapidly evolving landscape of AI development tools. I
 ---
 
 ### 🤝 Contributing
-Found a new tool that changes the game? Open a PR to add it to the stack.
+Found a new tool that changes the game? Open a PR to add it to the stack. If you add standards or collections, also:
+
+- Update `docs/standards/` or `collections/` with clear, opinionated guidance.
+- Add links to new documents in the "Standards & Collections" section above so they are easy to discover.
