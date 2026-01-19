@@ -1,0 +1,76 @@
+# ⚡ The Modern AI Developer Stack
+
+**A curated list of tools, frameworks, and methodologies for the AI-enabled engineering team.**
+
+This repository tracks the rapidly evolving landscape of AI development tools. It moves beyond simple "chatbots" to focus on **Agentic Workflows**, **Spec-Driven Development**, and **Developer Enablement**.
+
+---
+
+## 🏗️ Core Development (The "Hands")
+*Tools that integrate directly into the coding workflow.*
+
+* **[GitHub Copilot](https://github.com/features/copilot)** - The industry standard for in-editor code completion and chat.
+* **[Cursor](https://cursor.sh/)** - An AI-native fork of VS Code. It indexes your entire codebase for superior context awareness.
+* **[GitLab Duo](https://about.gitlab.com/solutions/ai/)** - The integrated AI suite for the GitLab ecosystem (DevSecOps).
+* **[Windsurf](https://codeium.com/windsurf)** - The "Agentic IDE" by Codeium. Uses "Flows" to maintain deep context across complex refactors.
+
+### CLI & Terminal Agents
+* **[Claude Code](https://docs.anthropic.com/)** / **Open Code** - Command-line interfaces that allow LLMs to perform file operations and edits directly from the terminal.
+* **[Aider](https://aider.chat/)** - The benchmark for AI pair programming in the terminal. Excellent at git-aware commits and refactoring.
+
+---
+
+## 🧠 Architecture & Methodology (The "Brain")
+*How we define software before the AI writes it. This is the shift to Spec-Driven Development (SDD).*
+
+* **[Agents.md](https://github.com/simonw/agents.md)** - A proposal for a standard file format to document context/instructions for AI agents within a repository.
+* **[GitHub Spec Kit](https://github.com/github/spec-kit)** - Tools and templates for defining structured specifications. This enables AI to generate high-quality code by strictly following a pre-defined "spec."
+
+---
+
+## 🤖 Building & Orchestrating Agents (The "Factory")
+*Frameworks for building your own internal agents and tools.*
+
+### Frameworks & Cloud
+* **[Microsoft Agent Framework](https://github.com/microsoft/autogen)** - A standardized way to build multi-agent conversations and workflows.
+* **[AWS Bedrock Agents](https://aws.amazon.com/bedrock/agents/)** - Fully managed agents on AWS infrastructure.
+* **[Microsoft Foundry](https://azure.microsoft.com/en-us/solutions/ai/)** - Comprehensive service for building and deploying AI apps on Azure.
+* **[LangGraph](https://langchain-ai.github.io/langgraph/)** - A library for building stateful, multi-actor applications with LLMs. The standard for complex orchestration.
+
+### Connectivity & Skills
+* **[MCP (Model Context Protocol)](https://modelcontextprotocol.io/)** - The new open standard for connecting AI assistants to systems (databases, Slack, GitHub) without building custom integrations for every model.
+* **[apm (Agent Package Manager)](https://github.com/gpt-engineer-org/apm)** - A package manager for distributing and installing AI agent "skills" and tools.
+
+### Low Code / No Code
+* **[n8n](https://n8n.io/)** - Workflow automation tool that has pivotally embraced AI. Allows creating complex agentic workflows via a visual node interface.
+
+---
+
+## 🚀 Rapid Prototyping & GenUI
+*Going from "Idea" to "Interface" in seconds.*
+
+* **[Lovable](https://lovable.dev/)** - Generates full-stack web apps from prompts. Excellent for MVPs.
+* **[v0](https://v0.dev/)** - Vercel's generative UI tool. Exports production-ready React/Tailwind code.
+
+---
+
+## 🛡️ Testing, Security & Observability
+*How do we trust what the AI built?*
+
+* **[Promptfoo](https://www.promptfoo.dev/)** - The CLI tool for testing LLM prompts. Essential for checking security jailbreaks, regressions, and output quality.
+* **[LangSmith](https://www.langchain.com/langsmith)** - Observability platform to trace, monitor, and debug agent workflows in production.
+
+---
+
+## 🏢 Enterprise Knowledge
+* **[Atlassian Rovo](https://www.atlassian.com/software/rovo)** - An AI engine that connects data across the Atlassian suite (Jira, Confluence) to answer questions and manage requirements.
+
+---
+
+## 📦 Local Development (Privacy-First)
+* **[Ollama](https://ollama.com/)** - Run Llama 3, DeepSeek, and other open-source models locally. Critical for testing agents without API costs or data leakage.
+
+---
+
+### 🤝 Contributing
+Found a new tool that changes the game? Open a PR to add it to the stack.
