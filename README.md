@@ -40,6 +40,7 @@ This repository tracks the rapidly evolving landscape of AI development tools. I
 ### Connectivity & Skills
 * **[MCP (Model Context Protocol)](https://modelcontextprotocol.io/)** - The new open standard for connecting AI assistants to systems (databases, Slack, GitHub) without building custom integrations for every model.
 * **[apm (Agent Package Manager)](https://github.com/gpt-engineer-org/apm)** - A package manager for distributing and installing AI agent "skills" and tools.
+* **[Agent Skills](https://agentskills.io/home)** - An open format for packaging reusable agent skills as folders of instructions, scripts, and resources.
 
 ### Low Code / No Code
 * **[n8n](https://n8n.io/)** - Workflow automation tool that has pivotally embraced AI. Allows creating complex agentic workflows via a visual node interface.
@@ -64,6 +65,7 @@ This repository tracks the rapidly evolving landscape of AI development tools. I
 
 ## 🏢 Enterprise Knowledge
 * **[Atlassian Rovo](https://www.atlassian.com/software/rovo)** - An AI engine that connects data across the Atlassian suite (Jira, Confluence) to answer questions and manage requirements.
+* **[NotebookLM](https://notebooklm.google)** - Google’s AI research and thinking partner that builds grounded assistants over your documents, transcripts, and notes.
 
 ---
 

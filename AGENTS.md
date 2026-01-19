@@ -1,211 +1,274 @@
-# AI Context & Instructions
+# AI Context & Agent Guidelines
 
-This file provides context for AI agents (Copilot, Cursor, Windsurf, Claude, CLI agents) interacting with this repository.
+This file defines how agentic coding tools (Cursor, Copilot, Windsurf, Claude, CLI agents) should behave in this repository.
 
----
-
-## 1. Repository Purpose
-
-This repository tracks the **"Modern AI Developer Stack."** It is a curated list of tools, frameworks, and methodologies designed to enable enterprise engineering teams to adopt **Agentic Workflows**, **Spec-Driven Development**, and **AI-Native Engineering**.
-
-The primary deliverable is an Awesome-style Markdown list (`README.md`) rather than an application or library.
+The goal is to help engineering teams use AI to maintain the "Modern AI Developer Stack" curated in `README.md`.
 
 ---
 
-## 2. AI Personas & Priorities
+## 1. Repository Purpose & Layout
 
-You are an expert **AI Enablement Architect**.
-
-- Tone: professional, technical, concise, forward-looking
-- Focus: tools and practices that enable *developers* (not only end-users)
-- Preference: "Agentic" and "Spec-Driven" workflows over ad-hoc chat
-- Bias: favor reproducible flows, scripts, and specs that other agents can follow
-
-When generating content or code, always ask: *"Does this help an engineering team build and maintain better software with AI?"*
-
----
-
-## 3. Project Layout & Tooling Status
-
-- Root docs: `README.md` (curated stack), `AGENTS.md` (this file)
-- No application code or language-specific toolchain is currently defined
-- No `package.json`, `pyproject.toml`, `Cargo.toml`, or similar manifest exists
-- No Cursor rules directory (`.cursor/`) or `.cursorrules` file is present
-- No Copilot repo instructions file (`.github/copilot-instructions.md`) is present
-
-This means there is **no canonical build, lint, or test command** yet. The sections below define conventions that agents should follow when adding tooling or code.
+- This repo is a documentation-first, Awesome-style list of AI-native engineering tools.
+- The primary artifact is `README.md`; there is no app or library at the root today.
+- Any code or examples that are added should demonstrate agentic, spec-driven workflows for developers.
+- Root docs:
+  - `README.md` – curated stack and main content.
+  - `AGENTS.md` – this operational guide for agents.
+  - `LICENSE.md`, `CONTRIBUTING.md` – standard metadata.
+- There is currently no language-specific toolchain at the repo root:
+  - No `package.json`, `pyproject.toml`, `Cargo.toml`, or equivalent.
+  - No top-level build, lint, or test script is defined.
+- If you add a subproject (Node, Python, Rust, etc.), create it in a subdirectory and document it:
+  - In the subproject `README`.
+  - In a short note in this file under the relevant language section.
 
 ---
 
-## 4. Build / Lint / Test Conventions
+## 2. Build / Lint / Test Commands
 
-### 4.1 General Principles
+These conventions apply when you introduce code or tooling. Always prefer simple, scriptable commands that work in CI.
 
-- Prefer **simple, scriptable commands** that can run non-interactively in CI
-- Expose canonical entrypoints via language-native tools (e.g. `npm test`, `pytest`, `go test`)
-- When adding a new subproject, always document its commands here and in its own `README`
+### 2.1 Markdown Documentation (current state)
 
-### 4.2 Markdown Documentation
-
-Current repository content is Markdown-only. For documentation quality:
-
-- Recommended linting: `npx markdownlint-cli "**/*.md"` (or equivalent) once a Node toolchain is introduced
-- Recommended link checking: `npx markdown-link-check README.md` (or similar) for CI
-
-If you introduce a docs-specific toolchain, standardize on scripts like:
+The repo is Markdown-only. Recommended commands once a Node toolchain exists:
 
 ```bash
-npm run lint:md      # markdownlint for all .md files
-npm run test:links   # link checker for README and docs
+npx markdownlint-cli "**/*.md"           # lint all markdown files
+npx markdown-link-check README.md         # check links in the main doc
 ```
 
-### 4.3 Node / TypeScript Subprojects (if added)
+If you wire these into `package.json`, expose canonical scripts:
 
-If you create a Node/TypeScript-based tool or example inside this repo:
+```jsonc
+{
+  "scripts": {
+    "lint:md": "markdownlint \"**/*.md\"",
+    "test:links": "markdown-link-check README.md"
+  }
+}
+```
 
-- Use `pnpm` or `npm` consistently within a given subproject
-- Define at minimum these scripts in `package.json`:
+### 2.2 Node / TypeScript Subprojects
+
+When you add a Node/TypeScript subproject (in a subdirectory):
+
+- Use `npm` or `pnpm` consistently inside that subproject.
+- Add at least these scripts in its `package.json`:
 
 ```jsonc
 {
   "scripts": {
     "build": "tsc -p .",
     "lint": "eslint .",
-    "test": "vitest run" // or jest
+    "test": "vitest run" // or "jest"
   }
 }
 ```
 
-**Running tests:**
+Testing conventions:
 
-- All tests: `npm test` (or `pnpm test`)
-- Single test file (Vitest): `npx vitest run path/to/file.test.ts`
-- Single test by name (Vitest): `npx vitest run --testNamePattern "name"`
-- Single Jest test: `npx jest path/to/file.test.ts` or `npx jest -t "name"`
-
-### 4.4 Python Subprojects (if added)
-
-If a Python-based tool or example is introduced:
-
-- Prefer `uv` or `pip` + `venv` for simplicity
-- Testing: `pytest` as the default
-
-Suggested commands:
+- All tests (Vitest):
 
 ```bash
-pytest                 # run all tests
-pytest path/test_file.py::test_case_name  # single test
-ruff check .           # lint (if ruff is used)
-ruff format .          # formatting (if ruff-format is used)
+npm test                      # or: pnpm test
 ```
 
-### 4.5 Other Languages
+- Single test file (Vitest):
 
-If you introduce other languages (Go, Rust, etc.):
+```bash
+npx vitest run path/to/file.test.ts
+```
 
-- Go: use `go test ./...` and `go test ./... -run TestName` for a single test
-- Rust: use `cargo test` and `cargo test test_name`
-- Document any deviation from these defaults in the subproject `README` and update this section.
+- Single test by name (Vitest):
 
----
+```bash
+npx vitest run --testNamePattern "test name substring"
+```
 
-## 5. Code Style Guidelines
+- Single Jest test file:
 
-These are **house rules** for any code added to this repository. They apply across languages unless explicitly overridden in a subproject.
+```bash
+npx jest path/to/file.test.ts
+```
 
-### 5.1 Language & Types
+- Single Jest test by name:
 
-- Prefer **TypeScript** over plain JavaScript for new Node-based code
-- Use **strict** typing (`strict: true` in `tsconfig.json`) when possible
-- For Python, prefer type hints (`from __future__ import annotations`) and static checking with `mypy` or `pyright`
+```bash
+npx jest -t "test name substring"
+```
 
-### 5.2 Imports & Modules
+Prefer Vitest for new projects unless there is a strong reason to use Jest.
 
-- Prefer **ES modules** for JavaScript/TypeScript (`type: "module"` when feasible)
-- Use absolute or path-mapped imports from a small set of root aliases instead of deep relative chains
-- Group imports: standard library / third-party / internal, with a blank line between groups
-- Avoid wildcard imports except for test helpers or namespaces where it improves clarity
+### 2.3 Python Subprojects
 
-### 5.3 Formatting
+When you add Python-based tools or examples:
 
-- Default formatter: **Prettier** for JS/TS/JSON/Markdown if introduced
-- For Python, use **black** or `ruff format`
-- Keep line length reasonable (target 100–120 characters)
-- No trailing whitespace; consistent use of LF line endings
+- Use `uv` or `pip` + `venv` for dependency management.
+- Default test runner: `pytest`.
 
-If you add formatter configuration files (`.prettierrc`, `pyproject.toml`, etc.), ensure they encode these defaults.
+Common commands:
 
-### 5.4 Naming Conventions
+```bash
+pytest                                   # run all tests
+pytest path/test_file.py::test_case      # run single test case
+ruff check .                             # lint (if ruff is used)
+ruff format .                            # formatting (if ruff-format is used)
+```
 
-- Variables, functions: `camelCase`
-- Classes, types, React components: `PascalCase`
-- Constants: `SCREAMING_SNAKE_CASE` only for truly global or configuration constants
-- Files: use `kebab-case` for scripts and modules; `PascalCase` for React components when applicable
-- Tests: mirror the file under test, e.g. `thing.ts` → `thing.test.ts`
+If you add type checking:
 
-### 5.5 Error Handling
+```bash
+mypy .                                   # or: pyright
+```
 
-- Fail **fast and loudly** in tooling code (CLI, scripts); surface actionable messages
-- Use language-standard error types where possible; extend with domain-specific errors when needed
-- Never silently swallow exceptions; at minimum, log with context
-- For async JS/TS, prefer `try/catch` around the smallest possible block and avoid unhandled promise rejections
-- For CLI tools, exit with non-zero codes on failure
+### 2.4 Other Languages (if introduced)
 
-### 5.6 Tests & Examples
+If you introduce additional languages, favor standard workflows and document deviations here.
 
-- Favor **small, focused tests** over large integration suites in this repo
-- When demonstrating tools, prefer executable examples over pseudocode
-- Keep tests deterministic; avoid network or external API calls unless explicitly mocked
+- Go:
 
----
+```bash
+go test ./...                            # all tests
+go test ./... -run TestName              # single test
+```
 
-## 6. Cursor & Copilot Rules
+- Rust:
 
-- There are currently **no repo-level Cursor or Copilot instruction files**
-- If you add `.cursor/rules/` or `.github/copilot-instructions.md`, ensure key constraints are mirrored here
-- IDE-specific instructions must not conflict with the style and workflow rules in this file
+```bash
+cargo test                               # all tests
+cargo test test_name                     # single test
+```
 
----
-
-## 7. Content Taxonomy (Core to This Repo)
-
-When suggesting or adding tools, adhere strictly to these categories:
-
-- **Core Development:** IDEs, CLI agents, and coding assistants
-- **Architecture:** Tools for specs, context, and requirements (SDD)
-- **Building Agents:** Frameworks (LangGraph, Autogen), Cloud (Bedrock), and Infrastructure (MCP)
-- **Testing & Observability:** Evals (Promptfoo), Tracing (LangSmith)
-- **Prototyping:** GenUI tools (Lovable, v0)
-- **Local Development:** Privacy-first runners (Ollama)
-
-Each entry in `README.md` should map cleanly to one of these categories.
+For any other language, follow its standard `build`/`lint`/`test` commands and add a short section to this file.
 
 ---
 
-## 8. Contribution Guidelines for Agents
+## 3. Code Style Guidelines
 
-When the user asks you to add a tool or evaluate a new technology:
+These rules apply to any code added to this repository unless a subproject documents stricter rules.
 
-1. **Evaluation Criteria**
-   - Does it help a developer build better software?
-   - Is it compatible with modern agentic workflows (e.g., uses MCP, allows local LLMs)?
-   - Is it distinct from existing tools in the list?
+### 3.1 Language & Types
 
-2. **Formatting Rules**
-   - Use the format: `* **[Tool Name](URL)** - Brief, value-focused description.`
-   - The description should answer: *What does this do for the developer?*
-   - Avoid marketing fluff and vendor buzzwords; prefer concrete capabilities
+- Prefer TypeScript over plain JavaScript for new Node-based code.
+- Enable strict typing (`strict: true` in `tsconfig.json`) by default.
+- Avoid `any` in TypeScript; use precise types or generics instead.
+- For Python, use type hints and run static analysis (`mypy` or `pyright`) when feasible.
+- Prefer explicit return types for exported functions and public APIs.
+
+### 3.2 Imports & Modules
+
+- Prefer ES modules (`import` / `export`) in JS/TS projects.
+- Group imports with this order and a blank line between groups:
+  1) Standard library.
+  2) Third-party dependencies.
+  3) Internal modules.
+- Use path-mapped or short absolute imports instead of deep relative chains.
+- Avoid wildcard imports except in test helpers or clearly scoped namespaces.
+- Keep side-effect-only imports (`import "./polyfill"`) rare and clearly documented.
+
+### 3.3 Formatting
+
+- Default formatter: Prettier for JS/TS/JSON/Markdown when a Node toolchain exists.
+- For Python, prefer `black` or `ruff format` for consistent formatting.
+- Use LF line endings and avoid trailing whitespace.
+- Target a line length of 100–120 characters.
+- Do not rely on manual alignment that an autoformatter will undo.
+
+### 3.4 Naming Conventions
+
+- Variables and functions: `camelCase`.
+- Classes, React components, and types/interfaces: `PascalCase`.
+- Constants: `SCREAMING_SNAKE_CASE` for global or configuration constants only.
+- Files:
+  - Runtime modules and scripts: `kebab-case`.
+  - React components: `PascalCase`.
+  - Tests: mirror the file under test, e.g. `thing.ts` -> `thing.test.ts`.
+
+### 3.5 Error Handling
+
+- Fail fast in tooling and CLIs; do not silently ignore failures.
+- Prefer language-standard error types, extending them only when necessary.
+- Always provide actionable error messages with context (what failed and what to try next).
+- For async JS/TS:
+  - Use `try/catch` around the smallest block that can fail.
+  - Avoid unhandled promise rejections; `await` or explicitly handle all promises.
+- For CLI tools:
+  - Exit with non-zero status codes on failure.
+  - Print errors to stderr; keep messages concise but specific.
+
+### 3.6 Testing Practices
+
+- Prefer many small, focused tests over a few large integration suites.
+- Keep tests deterministic; avoid live network or external API calls unless explicitly mocked.
+- Name tests to describe behavior, not implementation details.
+- For agent-focused tooling, include examples that can run in CI as part of the test suite.
 
 ---
 
-## 9. Quick Actions for Agents
+## 4. Cursor & Copilot Rules
 
-- **"Analyze Gaps"**: Compare the current list against the latest trends in Agentic AI (e.g., multi-agent orchestration, self-healing code, eval tooling, observability)
-- **"Format"**: Ensure `README.md` follows the standard Awesome List structure
-- **"Add Example"**: When adding an entry for a tool, optionally include a short usage sketch in a follow-up section rather than in the main bullet
+- There is currently no `.cursor/rules/` directory and no `.cursorrules` file in this repo.
+- There is currently no `.github/copilot-instructions.md` file in this repo.
+- If you add Cursor or Copilot instruction files:
+  - Ensure their constraints and workflows are consistent with this `AGENTS.md`.
+  - Mirror any important rules here so all agents see a single source of truth.
+  - Avoid IDE-specific rules that contradict the formatting, naming, or testing conventions above.
 
-Always keep this repository:
+---
 
-- Focused (developer enablement only)
-- Up to date (modern agentic patterns)
-- Consistent (taxonomy, formatting, and style as defined above)
+## 5. Agent Workflow Expectations
+
+- Optimize for reproducible flows over ad hoc chat:
+  - Prefer scripts, specs, and small utilities that other agents can invoke.
+  - When adding commands, document them clearly in both the code and the relevant README.
+- Treat `README.md` as the product:
+  - Keep entries focused on developer enablement, not marketing copy.
+  - Align new tools with the existing taxonomy in the main README.
+- When editing Markdown:
+  - Maintain consistent heading levels and bullet styles.
+  - Use concise, value-focused descriptions for tools and examples.
+- When using git from an agent:
+  - Avoid destructive commands (`reset --hard`, force pushes) unless the user explicitly requests them.
+  - Do not modify unrelated files or revert user changes.
+
+Agents should always ask: "Does this change help developers build and maintain better software with AI, and is it easy for other agents to follow?"
+
+---
+
+## 6. Using Agent Skills & NotebookLM
+
+- Prefer reusable skills for complex or repeatable workflows:
+  - Use the [Agent Skills](https://agentskills.io/home) format (folders with `SKILL.md`, scripts, and assets) when you capture a process that other agents should repeat.
+  - Keep skills in version control so changes are reviewable and auditable.
+- When designing a skill:
+  - Make the skill single-responsibility (one clear capability per skill).
+  - Include concrete examples and edge cases in the `SKILL.md` instructions.
+  - Document required tools, APIs, and environment assumptions.
+- For agents that support skills natively (e.g., Claude with skills, MCP-based agents):
+  - Prefer loading skills on demand instead of inlining long instructions into prompts.
+  - Share skills across compatible tools instead of duplicating logic per agent.
+- When working with external knowledge tools like [NotebookLM](https://notebooklm.google):
+  - Treat them as grounded research backends; summarize findings back into this repo.
+  - Do not rely on NotebookLM as the only copy of critical instructions; mirror important outputs into `README.md`, `AGENTS.md`, or dedicated docs.
+
+---
+
+## 7. How to Add a New Skill to This Repo
+
+- Location:
+  - Place skills under `skills/<skill-name>/SKILL.md`.
+  - Keep `skill-name` kebab-case, e.g. `example-summarize-notes`.
+- Structure of `SKILL.md`:
+  - Start with a title and a one-line purpose statement.
+  - Include sections for: inputs, workflow steps, output format, and constraints.
+  - Describe how the skill should interact with this repo (files to read/write, where to update docs).
+- Design guidelines:
+  - Make each skill single-responsibility (one clear capability).
+  - Prefer small, composable skills over large, do-everything instructions.
+  - Assume other agents may call the skill without prior context; be explicit.
+- Versioning:
+  - Keep skills under git; document breaking changes in a short `Changelog` section in `SKILL.md`.
+  - If a skill becomes obsolete, mark it as deprecated rather than deleting it immediately.
+- Discovery:
+  - Optionally add a short note in `README.md` or `AGENTS.md` pointing to important skills.
+  - Name skills so their purpose is obvious from the folder name.
