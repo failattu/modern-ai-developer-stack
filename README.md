@@ -86,6 +86,7 @@ As you add more standards or collections, list them here so both humans and AI a
 *Going from "Idea" to "Interface" in seconds.*
 
 * **[Lovable](https://lovable.dev/)** - Generates full-stack web apps from prompts. Excellent for MVPs.
+* **[GitHub Spark](https://github.com/features/spark)** - GitHub's platform for building and deploying intelligent apps, including AI-powered prototypes and workflows.
 * **[v0](https://v0.dev/)** - Vercel's generative UI tool. Exports production-ready React/Tailwind code.
 
 ---
