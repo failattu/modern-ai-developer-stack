@@ -67,10 +67,15 @@ As you add more standards or collections, list them here so both humans and AI a
 * **[Microsoft Foundry](https://azure.microsoft.com/en-us/solutions/ai/)** - Comprehensive service for building and deploying AI apps on Azure.
 * **[LangGraph](https://langchain-ai.github.io/langgraph/)** - A library for building stateful, multi-actor applications with LLMs. The standard for complex orchestration.
 
+### Agent Libraries
+* **[LangChain](https://python.langchain.com/docs/get_started/introduction)** - A batteries-included framework for building LLM applications, with chains, tools, memory, and integrations across many providers.
+* **[LlamaIndex](https://www.llamaindex.ai/)** - A data framework for connecting LLMs to your data, with indexing, retrieval, and RAG tooling.
+
 ### Connectivity & Skills
 * **[MCP (Model Context Protocol)](https://modelcontextprotocol.io/)** - The new open standard for connecting AI assistants to systems (databases, Slack, GitHub) without building custom integrations for every model.
-* **[apm (Agent Package Manager)](https://github.com/gpt-engineer-org/apm)** - A package manager for distributing and installing AI agent "skills" and tools.
+* **[apm (Agent Package Manager)](https://github.com/danielmeppiel/apm)** - A package manager for distributing and installing AI agent "skills" and tools.
 * **[Agent Skills](https://agentskills.io/home)** - An open format for packaging reusable agent skills as folders of instructions, scripts, and resources.
+
 
 ### Low Code / No Code
 * **[n8n](https://n8n.io/)** - Workflow automation tool that has pivotally embraced AI. Allows creating complex agentic workflows via a visual node interface.
