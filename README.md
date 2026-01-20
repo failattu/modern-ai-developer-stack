@@ -40,12 +40,15 @@ As you add more standards or collections, list them here so both humans and AI a
 * **[Cursor](https://cursor.sh/)** - An AI-native fork of VS Code. It indexes your entire codebase for superior context awareness.
 * **[GitLab Duo](https://about.gitlab.com/solutions/ai/)** - The integrated AI suite for the GitLab ecosystem (DevSecOps).
 * **[Windsurf](https://codeium.com/windsurf)** - The "Agentic IDE" by Codeium. Uses "Flows" to maintain deep context across complex refactors.
+* **[Kiro](https://kiro.dev/)** - An agentic AI development environment.
 
 ### CLI & Terminal Agents
 * **[Claude Code](https://docs.anthropic.com/)** / **Open Code** - Command-line interfaces that allow LLMs to perform file operations and edits directly from the terminal.
+* **[Gemini CLI](https://geminicli.com)** - A command-line interface for interacting with the Gemini AI platform.
 * **[Aider](https://aider.chat/)** - The benchmark for AI pair programming in the terminal. Excellent at git-aware commits and refactoring.
 * **[OpenAI Codex](https://github.com/openai/codex)** - A lightweight coding agent from OpenAI that runs locally in your terminal and integrates with ChatGPT and IDEs.
 * **[Goose](https://github.com/block/goose)** - A local-first AI engineering agent that automates complex tasks using MCP servers, extensions, and recipes.
+* **[Kiro CLI](https://kiro.dev/cli/)** - A command-line interface for interacting with the Kiro AI platform.
 
 ---
 
