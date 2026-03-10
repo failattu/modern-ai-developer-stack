@@ -212,12 +212,6 @@ For **generate mode**, output a summary of created files:
 4. Iterate based on how AI agents use the context in practice
 ```
 
-### Step 6: Ask for Confirmation (Generate Mode Only)
-
-Before creating files, ask the user:
-- "I will create the following files: [list]. Proceed? (y/n)"
-- If user says no, abort
-- If user says yes, create the files and report success
 
 ## Example Usage
 

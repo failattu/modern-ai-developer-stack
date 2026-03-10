@@ -158,7 +158,7 @@ Add a new endpoint: `POST /api/payments/refund`
 ### Context Traversal
 
 1. **File Level** (`payment-service.example.ts`):
-   - No existing refund code, no inline guidance
+   - Existing `refundPayment` method with inline documentation describing refund behavior and constraints
 
 2. **Module Level** (`src/payments/README.md`):
    - All payment operations are idempotent

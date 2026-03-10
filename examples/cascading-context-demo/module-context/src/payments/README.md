@@ -59,11 +59,15 @@ Every payment operation (create, capture, refund) can be safely retried without 
 **Implementation**: Use idempotency keys for all provider API calls:
 
 ```typescript
-await stripe.paymentIntents.create({
-  amount: 1000,
-  currency: 'usd',
-  idempotencyKey: `payment-${paymentId}`,
-})
+await stripe.paymentIntents.create(
+  {
+    amount: 1000,
+    currency: 'usd',
+  },
+  {
+    idempotencyKey: `payment-${paymentId}`,
+  },
+)
 ```
 
 **Why**: Network failures are common. Idempotency allows safe retries without double-charging customers.
@@ -177,11 +181,15 @@ Stripe-specific implementation:
 ```typescript
 export class StripeGateway implements PaymentGateway {
   async createPayment(params: CreatePaymentParams): Promise<Payment> {
-    const intent = await stripe.paymentIntents.create({
-      amount: params.amount,
-      currency: params.currency,
-      idempotencyKey: `payment-${params.paymentId}`,
-    })
+    const intent = await stripe.paymentIntents.create(
+      {
+        amount: params.amount,
+        currency: params.currency,
+      },
+      {
+        idempotencyKey: `payment-${params.paymentId}`,
+      },
+    )
     return mapStripeIntentToPayment(intent)
   }
 

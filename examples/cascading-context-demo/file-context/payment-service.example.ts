@@ -68,7 +68,10 @@ export class PaymentService {
       return payment
     } catch (error) {
       // After 3 retries, notify support for manual investigation
-      await this.handlePaymentFailure(params, error)
+      await this.handlePaymentFailure(
+        params as unknown as Record<string, unknown>,
+        error
+      )
       throw error
     }
   }

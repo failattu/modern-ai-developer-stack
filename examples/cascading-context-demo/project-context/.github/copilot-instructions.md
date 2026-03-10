@@ -4,7 +4,7 @@ Follow conventions defined in:
 1. `../../repository-context/AGENTS.md` (repository-wide)
 2. `../../repository-context/docs/standards/typescript.md` (TypeScript-specific)
 3. `../../repository-context/collections/typescript-web-service.md` (stack)
-4. `README.md` (this project)
+4. `../README.md` (this project)
 
 ## Key Project-Specific Points
 
